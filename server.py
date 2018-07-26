@@ -96,10 +96,9 @@ def db_tstamp(secs):
 	return (int(time.time())+secs)
 
 
-
-class Order_dbquery(threading.Thread):
+class Order_dbquery(multiprocessing.Process):
 	def __init__(self, queue_msg_in, q_data_order):#123123
-		threading.Thread.__init__(self)
+		multiprocessing.Process.__init__(self)
 		self.queue_msg_in = queue_msg_in
 		self.q_data_order = q_data_order#123123
 	def run(self):
@@ -161,9 +160,10 @@ class Order_dbquery(threading.Thread):
 			print('Error! '+str(e))
 			print(traceback.format_exc())
 
-class Data_db(threading.Thread):
+
+class Data_db(multiprocessing.Process):
 	def __init__(self, queue_msg_in, queue_msg_out, q_data_order):
-		threading.Thread.__init__(self)
+		multiprocessing.Process.__init__(self)
 		self.queue_msg_in = queue_msg_in
 		self.queue_msg_out = queue_msg_out
 		self.q_data_order = q_data_order
