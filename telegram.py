@@ -9,7 +9,7 @@ import socket
 import config
 
 token = config.token1
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot(token,threaded = False)
 
 class Listener(multiprocessing.Process):
 	def __init__(self, queue, listener_down_event):
