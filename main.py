@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #v 0.0.1
 import multiprocessing
 import threading
